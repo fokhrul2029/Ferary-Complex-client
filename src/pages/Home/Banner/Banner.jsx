@@ -1,26 +1,27 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import Slider from "../Slider/Slider";
+import { useQuery } from "@tanstack/react-query";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-
-// import required modules
-import { Autoplay, Pagination } from "swiper/modules";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Slider from "../Slider/Slider";
+import Loader from "../../../components/Loader/Loader";
+import useAxiosPublic from "../../../hooks/useAxiosPublic/useAxiosPublic";
 
 function Banner() {
-  const [data, setData] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    axios
-      .get("/banner.json")
-      .then((res) => setData(res.data))
-      .catch((error) => console.error(error));
-  }, []);
+  const { isPending, data } = useQuery({
+    queryKey: ["slides"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/banner.json");
+      return res.data;
+    },
+  });
+
+  if (isPending) return <Loader />;
 
   return (
     <div>
@@ -30,10 +31,9 @@ function Banner() {
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
-        {data.map((item) => (
+        {data?.map((item) => (
           <SwiperSlide key={item._id}>
-            {" "}
-            <Slider slides={item} />{" "}
+            <Slider slides={item} />
           </SwiperSlide>
         ))}
       </Swiper>

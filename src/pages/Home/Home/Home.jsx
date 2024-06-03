@@ -1,6 +1,7 @@
 import About from "../About/About";
 import Banner from "../Banner/Banner";
 import Coupon from "../Coupon/Coupon";
+import OurApartment from "../OurApartment/OurApartment";
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <Banner />
       <About />
       <Coupon />
+      <OurApartment />
     </div>
   );
 }

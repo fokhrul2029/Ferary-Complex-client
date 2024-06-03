@@ -1,6 +1,15 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth/useAuth";
 
 function Navbar() {
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout()
+      .then((res) => console.log(res))
+      .catch((error) => console.error(error));
+  };
+
   const links = (
     <>
       <li>
@@ -35,7 +44,7 @@ function Navbar() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 gap-1"
+              className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52 gap-1"
             >
               {links}
             </ul>
@@ -43,10 +52,42 @@ function Navbar() {
           <a className="btn btn-ghost text-xl">daisyUI</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 gap-1 z-10">{links}</ul>
         </div>
         <div className="navbar-end">
-          <NavLink to="/login" className="btn">Login</NavLink>
+          {user ? (
+            <>
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img alt={user.displayName} src={user.photoURL} />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li className="hover:bg-transparent" >
+                    <span>{user.displayName}</span>
+                  </li>
+                  <li>
+                    <a>Dashboard</a>
+                  </li>
+                  <li>
+                    <a onClick={handleLogout}>Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <NavLink to="/login" className="btn">
+              Login
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

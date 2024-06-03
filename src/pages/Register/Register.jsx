@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth/useAuth";
 
 function Register() {
   const [name, setName] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const { createUser, updateUserProfile } = useAuth();
+  const navigate = useNavigate();
 
   const handleRegisterForm = (e) => {
     e.preventDefault();
@@ -13,6 +16,16 @@ function Register() {
     const userInfo = { name, photo, email, password };
 
     console.log(userInfo);
+
+    createUser(email, password)
+      .then((res) => {
+        updateUserProfile(name, photo);
+        console.log(res);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

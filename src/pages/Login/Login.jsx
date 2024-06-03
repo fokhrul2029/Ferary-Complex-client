@@ -1,16 +1,27 @@
 /* eslint-disable react/no-unescaped-entities */
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth/useAuth";
 
 function Login() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const { loginUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleLoginForm = (e) => {
     e.preventDefault();
 
     const userInfo = { email, password };
     console.log(userInfo);
+
+    loginUser(email, password)
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((error) => console.error(error));
   };
 
   return (

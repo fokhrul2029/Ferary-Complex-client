@@ -1,7 +1,7 @@
 import About from "../About/About";
 import Banner from "../Banner/Banner";
 import Coupon from "../Coupon/Coupon";
-import OurApartment from "../OurApartment/OurApartment";
+import Location from "../Location/Location"; 
 
 function Home() {
   return (
@@ -9,7 +9,7 @@ function Home() {
       <Banner />
       <About />
       <Coupon />
-      <OurApartment />
+      <Location />
     </div>
   );
 }

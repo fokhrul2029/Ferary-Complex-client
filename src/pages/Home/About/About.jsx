@@ -5,7 +5,7 @@ import Title from "../../../components/Title/Title";
 function About() {
   return (
     <div>
-      <Title />
+      <Title title={"About The Building"} />
       <div className="flex flex-col md:flex-row py-10 gap-8 justify-between items-center">
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h1 className="text-4xl font-semibold py-2">

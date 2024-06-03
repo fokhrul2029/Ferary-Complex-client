@@ -16,7 +16,7 @@ function Banner() {
   const { isPending, data } = useQuery({
     queryKey: ["slides"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/banner.json");
+      const res = await axiosPublic.get("/slides.json");
       return res.data;
     },
   });

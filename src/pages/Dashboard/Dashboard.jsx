@@ -30,6 +30,11 @@ function Dashboard() {
           content="Manage the all of coupons"
           to="/dashboard/coupons"
         />
+        <Card
+          title="Payment History"
+          content="See The Payment History"
+          to="/dashboard/payment-history"
+        />
       </div>
     </div>
   );

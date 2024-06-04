@@ -1,6 +1,29 @@
 /* eslint-disable react/prop-types */
+
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth/useAuth";
+
 function Card({ apartment }) {
-  const { image, apartment_no, block_name, floor_no, rent } = apartment;
+  const { _id, image, apartment_no, block_name, floor_no, rent } = apartment;
+
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAgreement = (id) => {
+    if (!user) return navigate("/login");
+
+    if (user) {
+      const apartmentInfo = {
+        userInfo: {
+          name: user.displayName,
+          email: user.email,
+        },
+        apartment_id: id,
+      };
+
+      console.log(apartmentInfo);
+    }
+  };
   return (
     <div className="card w-full bg-base-100 shadow-xl">
       <figure>
@@ -12,7 +35,12 @@ function Card({ apartment }) {
         <p>Floor: {floor_no}</p>
         <p>Rent: ${rent}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Agreement</button>
+          <button
+            onClick={() => handleAgreement(_id)}
+            className="btn btn-primary"
+          >
+            Agreement
+          </button>
         </div>
       </div>
     </div>

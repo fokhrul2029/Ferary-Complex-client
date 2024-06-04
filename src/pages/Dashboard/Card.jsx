@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-function Card({ title, content, to }) { 
+function Card({ title, content, to }) {
   return (
     <div className="card bg-white shadow-xl">
       <div className="card-body">

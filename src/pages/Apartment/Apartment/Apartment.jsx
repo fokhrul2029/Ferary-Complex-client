@@ -9,7 +9,7 @@ function Apartment() {
   const { isPending, data } = useQuery({
     queryKey: ["apartments"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/apartments.json");
+      const res = await axiosPublic.get("/apartments");
       return res.data;
     },
   });

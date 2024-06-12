@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth/useAuth";
+import Logo from "../../../components/Logo/Logo";
 
 function Navbar() {
   const { user, logout, loading } = useAuth();
@@ -83,7 +84,7 @@ function Navbar() {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <Logo title="Ferary Complex" />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-1 z-10">{links}</ul>

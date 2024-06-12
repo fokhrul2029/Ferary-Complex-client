@@ -10,7 +10,7 @@ function Coupon() {
   const { isPending, data: coupons } = useQuery({
     queryKey: ["coupons"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/coupons.json");
+      const res = await axiosPublic.get("/coupons");
       return res.data;
     },
   });

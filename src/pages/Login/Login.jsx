@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth/useAuth";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 function Login() {
   const [email, setEmail] = useState(null);
@@ -69,6 +70,7 @@ function Login() {
               Register Now
             </Link>
           </p>
+          <SocialLogin />
         </form>
       </div>
     </div>

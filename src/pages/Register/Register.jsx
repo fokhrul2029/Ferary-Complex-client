@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth/useAuth";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 function Register() {
   const [name, setName] = useState(null);
@@ -99,6 +100,7 @@ function Register() {
               Login Now
             </Link>
           </p>
+          <SocialLogin />
         </form>
       </div>
     </div>

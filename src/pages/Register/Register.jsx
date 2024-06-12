@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth/useAuth";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic/useAxiosPublic";
 
 function Register() {
   const [name, setName] = useState(null);
@@ -10,6 +11,7 @@ function Register() {
   const [password, setPassword] = useState(null);
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const handleRegisterForm = (e) => {
     e.preventDefault();
@@ -20,9 +22,12 @@ function Register() {
 
     createUser(email, password)
       .then((res) => {
+        axiosPublic
+          .post("/users", { name, email })
+          .then((res) => console.log(res.data));
         updateUserProfile(name, photo);
         console.log(res);
-        navigate("/");
+        // navigate("/");
       })
       .catch((error) => {
         console.error(error);

@@ -38,6 +38,7 @@ function Coupon() {
                 <th></th>
                 <th>Coupons</th>
                 <th>Discount(%)</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -48,7 +49,14 @@ function Coupon() {
                   <th>{index + 1}</th>
                   <td>{coupon.code}</td>
                   <td>{coupon.discount}</td>
-                  <td>Blue</td>
+                  <td>
+                    {coupon.isActive ? (
+                      <p className="text-green-500">Active</p>
+                    ) : (
+                      <p className="text-orange-800">Inactive</p>
+                    )}
+                  </td>
+                  <td>Edit</td>
                 </tr>
               ))}
             </tbody>

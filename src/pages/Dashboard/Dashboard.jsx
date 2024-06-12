@@ -35,6 +35,7 @@ function Dashboard() {
           content="See The Payment History"
           to="/dashboard/payment-history"
         />
+        <Card title="Make Payment" content="Make a Payment" to="/dashboard/make-payment" />
       </div>
     </div>
   );

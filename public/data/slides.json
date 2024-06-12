@@ -1,18 +1,22 @@
 [
   {
-    "_id": 1,
-    "slide_Img": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg"
+    "title": "Sunset Heights Apartments",
+    "slide_Img": "https://i.ibb.co/RHg0G7b/OIP-1.jpg"
   },
   {
-    "_id": 2,
-    "slide_Img": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg"
+    "title": "Riverside Haven",
+    "slide_Img": "https://i.ibb.co/RzBr3Bp/OIP-2.jpg"
   },
   {
-    "_id": 3,
-    "slide_Img": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg"
+    "title": "Cityscape Towers",
+    "slide_Img": "https://i.ibb.co/z6gXWvC/OIP-3.jpg"
   },
   {
-    "_id": 4,
-    "slide_Img": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg"
+    "title": "Meadowbrook Estates",
+    "slide_Img": "https://i.ibb.co/BBD4Gj7/OIP-4.jpg"
+  },
+  {
+    "title": "Skyline Loft Apartments",
+    "slide_Img": "https://i.ibb.co/J7Xtz7s/OIP-5.jpg"
   }
 ]

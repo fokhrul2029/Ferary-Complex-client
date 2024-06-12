@@ -1,7 +1,7 @@
 [
   {
     "_id": 1,
-    "image": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg",
+    "image": "https://i.ibb.co/2ybJXyF/R-2.jpg",
     "floor_no": 5,
     "block_name": "A",
     "apartment_no": "501",
@@ -9,7 +9,7 @@
   },
   {
     "_id": 2,
-    "image": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg",
+    "image": "https://i.ibb.co/J7Xtz7s/OIP-5.jpg",
     "floor_no": 3,
     "block_name": "B",
     "apartment_no": "305",
@@ -17,7 +17,7 @@
   },
   {
     "_id": 3,
-    "image": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg",
+    "image": "https://i.ibb.co/RHg0G7b/OIP-1.jpg",
     "floor_no": 7,
     "block_name": "C",
     "apartment_no": "702",
@@ -25,10 +25,58 @@
   },
   {
     "_id": 4,
-    "image": "https://i.ibb.co/YjDvvSx/hospital-complex.jpg",
+    "image": "https://i.ibb.co/vjthGzZ/R-1.jpg",
     "floor_no": 2,
-    "block_name": "D",
-    "apartment_no": "204",
+    "block_name": "E",
+    "apartment_no": "354",
     "rent": 1000
+  },
+  {
+    "_id": 5,
+    "image": "https://i.ibb.co/RzBr3Bp/OIP-2.jpg",
+    "floor_no": 3,
+    "block_name": "F",
+    "apartment_no": "432",
+    "rent": 1400
+  },
+  {
+    "_id": 6,
+    "image": "https://i.ibb.co/z6gXWvC/OIP-3.jpg",
+    "floor_no": 6,
+    "block_name": "G",
+    "apartment_no": "678",
+    "rent": 1500
+  },
+  {
+    "_id": 7,
+    "image": "https://i.ibb.co/4Pkr3jr/OIP-6.jpg",
+    "floor_no": 8,
+    "block_name": "H",
+    "apartment_no": "653",
+    "rent": 1700
+  },
+  {
+    "_id": 8,
+    "image": "https://i.ibb.co/BBD4Gj7/OIP-4.jpg",
+    "floor_no": 9,
+    "block_name": "I",
+    "apartment_no": "468",
+    "rent": 2000
+  },
+  {
+    "_id": 9,
+    "image": "https://i.ibb.co/ZLjXFmZ/R.jpg",
+    "floor_no": 5,
+    "block_name": "J",
+    "apartment_no": "852",
+    "rent": 2300
+  },
+  {
+    "_id": 10,
+    "image": "https://i.ibb.co/CmC0YWm/OIF.jpg",
+    "floor_no": 2,
+    "block_name": "K",
+    "apartment_no": "917",
+    "rent": 1100
   }
 ]

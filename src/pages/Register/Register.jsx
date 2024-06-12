@@ -27,7 +27,7 @@ function Register() {
           .then((res) => console.log(res.data));
         updateUserProfile(name, photo);
         console.log(res);
-        // navigate("/");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);

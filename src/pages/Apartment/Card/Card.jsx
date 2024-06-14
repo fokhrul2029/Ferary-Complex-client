@@ -2,12 +2,14 @@
 
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth/useAuth";
+import useAxiosPublic from "../../../hooks/useAxiosPublic/useAxiosPublic";
 
 function Card({ apartment }) {
   const { _id, image, apartment_no, block_name, floor_no, rent } = apartment;
 
   const { user } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const handleAgreement = (id) => {
     if (!user) return navigate("/login");
@@ -22,6 +24,15 @@ function Card({ apartment }) {
       };
 
       console.log(apartmentInfo);
+
+      axiosPublic
+        .post("/bookedApartments", apartmentInfo)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
   return (

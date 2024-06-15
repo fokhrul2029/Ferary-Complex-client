@@ -3,6 +3,7 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic/useAxiosPublic";
+import Swal from "sweetalert2";
 
 function Card({ apartment }) {
   const { _id, image, apartment_no, block_name, floor_no, rent } = apartment;
@@ -28,10 +29,17 @@ function Card({ apartment }) {
       axiosPublic
         .post("/bookedApartments", apartmentInfo)
         .then((res) => {
-          console.log(res.data);
+          Swal.fire({
+            title: `${res.data.message}`,
+            icon: `${res.data.status === 200 ? "success" : "warning"}`,
+          });
         })
         .catch((error) => {
           console.error(error);
+          Swal.fire({
+            title: "Something went wrong. Try later",
+            icon: "warning",
+          });
         });
     }
   };

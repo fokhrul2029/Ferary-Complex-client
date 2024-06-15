@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth/useAuth";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 function Login() {
   const [email, setEmail] = useState(null);
@@ -14,15 +15,22 @@ function Login() {
   const handleLoginForm = (e) => {
     e.preventDefault();
 
-    const userInfo = { email, password };
-    console.log(userInfo);
-
     loginUser(email, password)
       .then((res) => {
         console.log(res);
+        Swal.fire({
+          title: "Login success.",
+          icon: "success",
+        });
         navigate("/");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "User or password incorrect. Try again.",
+          icon: "warning",
+        });
+      });
   };
 
   return (

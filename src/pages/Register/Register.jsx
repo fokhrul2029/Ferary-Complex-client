@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth/useAuth";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import useAxiosPublic from "../../hooks/useAxiosPublic/useAxiosPublic";
+import Swal from "sweetalert2";
 
 function Register() {
   const [name, setName] = useState(null);
@@ -16,21 +17,24 @@ function Register() {
   const handleRegisterForm = (e) => {
     e.preventDefault();
 
-    const userInfo = { name, photo, email, password };
-
-    console.log(userInfo);
-
     createUser(email, password)
       .then((res) => {
-        axiosPublic
-          .post("/users", { name, email })
-          .then((res) => console.log(res.data));
+        axiosPublic.post("/users", { name, email }).then((res) => {
+          Swal.fire({
+            title: `${res.data.message}`,
+            icon: "success",
+          });
+        });
         updateUserProfile(name, photo);
         console.log(res);
         navigate("/");
       })
       .catch((error) => {
         console.error(error);
+        Swal.fire({
+          title: "Something went wrong. Try later.",
+          icon: "warning",
+        });
       });
   };
 

@@ -5,52 +5,123 @@ import {
   FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth/useAuth";
+import Swal from "sweetalert2";
+import useUsersRole from "../../../hooks/useUsersRole/useUsersRole";
 
 function Navbar2() {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+  const usersRole = useUsersRole();
+
+  const handleLogout = () => {
+    logout()
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          title: "Logout success.",
+          icon: "success",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "something went wrong! try later.",
+          icon: "warning",
+        });
+      });
+  };
+
   const links = (
     <>
       <li>
-        <NavLink to="/" className="flex items-center space-x-3">
+        <NavLink to="/dashboard" className="flex items-center space-x-3">
           <FaHome />
-          <span>Home</span>
+          <span>Dashboard</span>
         </NavLink>
       </li>
       <li>
-        <a className="flex items-center space-x-3">
+        <NavLink
+          to="/dashboard/profile"
+          className="flex items-center space-x-3"
+        >
           <FaUser />
           <span>Profile</span>
-        </a>
+        </NavLink>
       </li>
+      {usersRole === "admin" && (
+        <li>
+          <NavLink
+            to="/dashboard/manage-member"
+            className="flex items-center space-x-3"
+          >
+            <FaChartBar />
+            <span>Manage Members</span>
+          </NavLink>
+        </li>
+      )}
       <li>
-        <a className="flex items-center space-x-3">
-          <FaChartBar />
-          <span>Manage User</span>
-        </a>
-      </li>
-      <li>
-        <a className="flex items-center space-x-3">
+        <NavLink
+          to="/dashboard/announcements"
+          className="flex items-center space-x-3"
+        >
           <FaCog />
-          <span>Make Announcement</span>
-        </a>
+          <span>
+            {usersRole === "admin" ? "Make Announcement" : "Announcement"}
+          </span>
+        </NavLink>
       </li>
+      {usersRole === "member" && (
+        <>
+          <li>
+            <NavLink
+              to="/dashboard/payment-history"
+              className="flex items-center space-x-3"
+            >
+              <FaCog />
+              <span>Payment History</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/make-payment"
+              className="flex items-center space-x-3"
+            >
+              <FaCog />
+              <span>Make Payment</span>
+            </NavLink>
+          </li>
+        </>
+      )}
+      {usersRole === "admin" && (
+        <>
+          <li>
+            <NavLink
+              to="/dashboard/agreement-request"
+              className="flex items-center space-x-3"
+            >
+              <FaCog />
+              <span>Agreement Requests</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/coupons"
+              className="flex items-center space-x-3"
+            >
+              <FaCog />
+              <span>Manage Coupons</span>
+            </NavLink>
+          </li>
+        </>
+      )}
       <li>
-        <a className="flex items-center space-x-3">
-          <FaCog />
-          <span>Agreement Requests</span>
-        </a>
-      </li>
-      <li>
-        <a className="flex items-center space-x-3">
-          <FaCog />
-          <span>Manage Coupons</span>
-        </a>
-      </li>
-      <li>
-        <a className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3">
           <FaSignOutAlt />
-          <span>Logout</span>
-        </a>
+          <span onClick={handleLogout}>Logout</span>
+        </div>
       </li>
     </>
   );

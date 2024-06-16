@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../useAxiosPublic/useAxiosPublic";
 import useAuth from "../useAuth/useAuth";
+import Loader from "../../components/Loader/Loader";
 
 function useUsersRole() {
   const { user } = useAuth();
@@ -12,8 +13,10 @@ function useUsersRole() {
       return res.data;
     },
   });
-  if (!isPending) {
-    const usersRole = data.role;
+  if (isPending) {
+    return <Loader />;
+  } else {
+    const usersRole = data?.role;
     return usersRole;
   }
 }

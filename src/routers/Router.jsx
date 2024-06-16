@@ -15,6 +15,7 @@ import Coupon from "../pages/Coupon/Coupon/Coupon";
 import PaymentHistory from "../pages/PaymentHistory/PaymentHistory/PaymentHistory";
 import MakePayment from "../pages/MakePayment/MakePayment";
 import Payment from "../pages/Payment/Payment";
+import AgreementRequest from "../pages/AgreementRequest/AgreementRequest/AgreementRequest";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Payment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/agreement-request",
+        element: (
+          <PrivateRoute>
+            <AgreementRequest />
           </PrivateRoute>
         ),
       },

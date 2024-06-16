@@ -1,14 +1,27 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import Logo from "../../../components/Logo/Logo";
+import Swal from "sweetalert2";
 
 function Navbar() {
   const { user, logout, loading } = useAuth();
 
   const handleLogout = () => {
     logout()
-      .then((res) => console.log(res))
-      .catch((error) => console.error(error));
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          title: "Logout success.",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "something went wrong! try later.",
+          icon: "warning",
+        });
+      });
   };
 
   const links = (

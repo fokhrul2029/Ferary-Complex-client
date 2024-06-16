@@ -1,14 +1,34 @@
 import { useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic/useAxiosPublic";
+import Swal from "sweetalert2";
 
 function MakeAnnounce() {
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
+  const axiosPublic = useAxiosPublic();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const announce = { title, description };
-    console.log(announce);
+
+    axiosPublic
+      .post("/announcements", announce)
+      .then((res) => {
+        Swal.fire({
+          title: res.data.message,
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "Something went wrong. Try later!",
+          icon: "warning",
+        });
+      });
+    setTitle("");
+    setDescription("");
   };
   return (
     <div className="flex items-center justify-center mt-10">

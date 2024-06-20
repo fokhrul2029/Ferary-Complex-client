@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 function Agreement({ apartment }) {
   // Replace with your actual date
+  console.log(apartment)
 
   return (
     <div className="py-20">

@@ -43,22 +43,46 @@ function Payment() {
     }
   };
 
-  // here are payment processing code 
-  const [paymentStatus, setPaymentStatus] = useState("");
+  // here are payment processing code
+  // const [paymentStatus, setPaymentStatus] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handlePayment = async () => {
     setIsProcessing(true);
-    setPaymentStatus("");
+    // setPaymentStatus("");
+    // console.log("Payment is pending Now");
+
+    const paymentInfo = {
+      userInfo,
+      apartmentRent,
+      month,
+      floor_no,
+      block_name,
+      apartment_no,
+    };
+
+    axiosPublic
+      .post("/create-payment", paymentInfo)
+      .then((res) => {
+        console.log(res.data);
+        const redirectURL = res.data.GatewayPageURL;
+        if (redirectURL) {
+          window.location.replace(redirectURL);
+          // window.open(redirectURL, '_blank', 'width=800,height=600');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     try {
       // Simulate payment processing delay
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Simulate a successful payment
-      setPaymentStatus("Payment successful!");
+      // setPaymentStatus("Payment successful!");
     } catch (error) {
-      setPaymentStatus("Payment failed. Please try again.");
+      // setPaymentStatus("Payment failed. Please try again.");
     } finally {
       setIsProcessing(false);
     }
@@ -105,8 +129,10 @@ function Payment() {
                 <span>{discount}%</span>
               </div>
             )}
-            <div className="mt-4">
-              <label className="block mb-2 font-semibold">Coupon Code:</label>
+            <div className="pt-4">
+              <label className="font-semibold">Coupon Code:</label>
+            </div>
+            <div className="mb-4 flex gap-2">
               <input
                 type="text"
                 className="input input-bordered w-full"
@@ -114,13 +140,11 @@ function Payment() {
                 value={coupon}
                 onChange={(e) => setCoupon(e.target.value)}
               />
+              <button onClick={handleApplyCoupon} className="btn btn-primary">
+                {isPending ? "Pending..." : "Apply"}
+              </button>
             </div>
-            <button
-              onClick={handleApplyCoupon}
-              className="btn btn-primary w-full mt-4"
-            >
-              {isPending ? "Pending..." : "Apply Coupon"}
-            </button>
+
             {message && (
               <p
                 className={`mt-4 ${
@@ -130,28 +154,18 @@ function Payment() {
                 {message}
               </p>
             )}
-            {/* Add your payment processing form or component here */}
 
-            <div className="py-10 border">
+            <div className="py-6">
               <div className="mt-6">
                 <button
                   onClick={handlePayment}
-                  className="btn btn-primary w-full"
+                  className="btn btn-success text-white w-full"
                   disabled={isProcessing}
                 >
-                  {isProcessing ? "Processing..." : `Pay $${apartmentRent.toFixed(2)}`}
+                  {isProcessing
+                    ? "Processing..."
+                    : `Pay $${apartmentRent.toFixed(2)}`}
                 </button>
-                {paymentStatus && (
-                  <p
-                    className={`mt-4 ${
-                      paymentStatus.includes("successful")
-                        ? "text-green-500"
-                        : "text-red-500"
-                    }`}
-                  >
-                    {paymentStatus}
-                  </p>
-                )}
               </div>
             </div>
           </div>

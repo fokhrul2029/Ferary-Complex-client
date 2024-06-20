@@ -25,7 +25,7 @@ Welcome to Ferary Complex, a robust Building Management System (BMS) designed fo
 
 - **User-Friendly Interface:** Intuitive design and navigation for an exceptional user experience.
 
-- **Responsive Design:** ully optimized for all devices including desktops, tablets, and smartphones.
+- **Responsive Design:** fully optimized for all devices including desktops, tablets, and smartphones.
 - **Apartment Lease Agreements:** Simplified process for residents to agree to apartment leases online.
 
 - **Coupon System for Rent:** Attractive coupon system to offer discounts and promotions on rent.

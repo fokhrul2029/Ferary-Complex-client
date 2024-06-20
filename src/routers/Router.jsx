@@ -16,6 +16,9 @@ import PaymentHistory from "../pages/PaymentHistory/PaymentHistory/PaymentHistor
 import MakePayment from "../pages/MakePayment/MakePayment";
 import Payment from "../pages/Payment/Payment";
 import AgreementRequest from "../pages/AgreementRequest/AgreementRequest/AgreementRequest";
+import SuccessPayment from "../pages/SuccessPayment/SuccessPayment";
+import FailPayment from "../pages/FailPayment/FailPayment";
+import CancelPayment from "../pages/CancelPayment/CancelPayment";
 
 const router = createBrowserRouter([
   {
@@ -114,6 +117,30 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AgreementRequest />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/success-payment",
+        element: (
+          <PrivateRoute>
+            <SuccessPayment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/fail-payment",
+        element: (
+          <PrivateRoute>
+            <FailPayment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/cancel-payment",
+        element: (
+          <PrivateRoute>
+            <CancelPayment />
           </PrivateRoute>
         ),
       },

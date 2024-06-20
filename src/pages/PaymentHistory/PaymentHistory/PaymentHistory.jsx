@@ -1,22 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
 import Card from "../Card/Card";
+import useAxiosPublic from "../../../hooks/useAxiosPublic/useAxiosPublic";
+import useAuth from "../../../hooks/useAuth/useAuth";
+import Loader from "../../../components/Loader/Loader";
 
 function PaymentHistory() {
-  const paymentData = [
-    {
-      _id: 1,
-      id: 1234,
-      amount: 100.0,
-      date: "2024-06-01",
-      method: "Credit Card",
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+
+  const { isPending, data } = useQuery({
+    queryKey: "paymentHistory",
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/payment-history?email=${user.email}`);
+      return res.data;
     },
-    {
-      _id: 2,
-      id: 5678,
-      amount: 50.5,
-      date: "2024-05-15",
-      method: "PayPal",
-    },
-  ];
+  });
+
+  // console.log(data);
 
   return (
     <div>
@@ -32,9 +32,22 @@ function PaymentHistory() {
                 <th className="px-3 py-2">Payment Method</th>
               </tr>
             </thead>
-            {paymentData?.map((payment) => (
-              <Card key={payment._id} payment={payment} />
-            ))}
+            {isPending ? (
+              <Loader />
+            ) : data.length > 0 ? (
+              data?.map((payment) => (
+                <Card key={payment._id} payment={payment} />
+              ))
+            ) : (
+              <tr className="">
+                <td
+                  colSpan={4}
+                  className="font-medium  text-3xl text-center text-red-600 py-4 !w-full"
+                >
+                  {data.message}
+                </td>
+              </tr>
+            )}
           </table>
         </div>
       </div>

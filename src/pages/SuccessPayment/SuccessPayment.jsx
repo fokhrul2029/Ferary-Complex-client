@@ -1,7 +1,10 @@
 function SuccessPayment() {
   return (
     <div>
-      <h1>Payment success</h1>
+     <h1 className="text-3xl font-bold mb-8 lg:mb-4">Payment Success</h1>
+     <div>
+
+     </div>
     </div>
   );
 }

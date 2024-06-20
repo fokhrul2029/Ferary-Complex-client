@@ -19,6 +19,8 @@ import AgreementRequest from "../pages/AgreementRequest/AgreementRequest/Agreeme
 import SuccessPayment from "../pages/SuccessPayment/SuccessPayment";
 import FailPayment from "../pages/FailPayment/FailPayment";
 import CancelPayment from "../pages/CancelPayment/CancelPayment";
+import MembersRoute from "./MembersRoute";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +78,9 @@ const router = createBrowserRouter([
         path: "/dashboard/manage-member",
         element: (
           <PrivateRoute>
-            <ManageMember />
+            <AdminRoute>
+              <ManageMember />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -84,7 +88,9 @@ const router = createBrowserRouter([
         path: "/dashboard/coupons",
         element: (
           <PrivateRoute>
-            <Coupon />
+            <AdminRoute>
+              <Coupon />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -92,7 +98,9 @@ const router = createBrowserRouter([
         path: "/dashboard/payment-history",
         element: (
           <PrivateRoute>
-            <PaymentHistory />
+            <MembersRoute>
+              <PaymentHistory />
+            </MembersRoute>
           </PrivateRoute>
         ),
       },
@@ -100,7 +108,9 @@ const router = createBrowserRouter([
         path: "/dashboard/make-payment",
         element: (
           <PrivateRoute>
-            <MakePayment />
+            <MembersRoute>
+              <MakePayment />
+            </MembersRoute>
           </PrivateRoute>
         ),
       },
@@ -108,7 +118,9 @@ const router = createBrowserRouter([
         path: "/dashboard/payment",
         element: (
           <PrivateRoute>
-            <Payment />
+            <MembersRoute>
+              <Payment />
+            </MembersRoute>
           </PrivateRoute>
         ),
       },
@@ -116,7 +128,9 @@ const router = createBrowserRouter([
         path: "/dashboard/agreement-request",
         element: (
           <PrivateRoute>
-            <AgreementRequest />
+            <AdminRoute>
+              <AgreementRequest />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -124,7 +138,9 @@ const router = createBrowserRouter([
         path: "/dashboard/success-payment",
         element: (
           <PrivateRoute>
-            <SuccessPayment />
+            <MembersRoute>
+              <SuccessPayment />
+            </MembersRoute>
           </PrivateRoute>
         ),
       },
@@ -132,7 +148,9 @@ const router = createBrowserRouter([
         path: "/dashboard/fail-payment",
         element: (
           <PrivateRoute>
-            <FailPayment />
+            <MembersRoute>
+              <FailPayment />
+            </MembersRoute>
           </PrivateRoute>
         ),
       },
@@ -140,7 +158,9 @@ const router = createBrowserRouter([
         path: "/dashboard/cancel-payment",
         element: (
           <PrivateRoute>
-            <CancelPayment />
+            <MembersRoute>
+              <CancelPayment />
+            </MembersRoute>
           </PrivateRoute>
         ),
       },

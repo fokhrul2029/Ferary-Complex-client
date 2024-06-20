@@ -4,15 +4,19 @@ import useAuth from "../../hooks/useAuth/useAuth";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import useAxiosPublic from "../../hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
+import Loader from "../../components/Loader/Loader";
 
 function Register() {
   const [name, setName] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile, loading, user } = useAuth();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
+
+  if (loading) return <Loader />;
+  if (user) return navigate("/");
 
   const handleRegisterForm = (e) => {
     e.preventDefault();

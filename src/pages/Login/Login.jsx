@@ -5,12 +5,16 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth/useAuth";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
+import Loader from "../../components/Loader/Loader";
 
 function Login() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const { loginUser } = useAuth();
+  const { loginUser, user, loading } = useAuth();
   const navigate = useNavigate();
+
+  if (loading) return <Loader />;
+  if (user) return navigate("/");
 
   const handleLoginForm = (e) => {
     e.preventDefault();

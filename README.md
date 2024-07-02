@@ -9,9 +9,10 @@ Welcome to Ferary Complex, a robust Building Management System (BMS) designed fo
 - Username: fokhrul@gmail.com
 - Password: Fokhrul
 
-### Live Site URL
+### Demo
 
-- https://building-management-app-d8c65.web.app/
+- **Live Site:** https://building-management-app-d8c65.web.app/
+- **Server Repo:** https://github.com/fokhrul2029/Ferary-Complex-server
 
 ## Features of Ferary Complex Building Management System
 
@@ -33,3 +34,25 @@ Welcome to Ferary Complex, a robust Building Management System (BMS) designed fo
 - **Amenity Booking System:** Online booking system for building amenities such as gym, pool, and common rooms.
 
 - **Real-Time Updates:** Instantly update membership statuses and access permissions when changes are made.
+
+## Clone and Run The Project
+
+**To clone and Run the project on your local Computer, Follow the steps:**
+
+- **step 1:** clone the Repository
+
+```bash
+git clone https://github.com/fokhrul2029/Ferary-Complex-client.git
+```
+
+- **step 2:** Install Dependency
+
+```bash
+npm install
+```
+
+- **step 3:** Run on local computer
+
+```bash
+npm run dev
+```
